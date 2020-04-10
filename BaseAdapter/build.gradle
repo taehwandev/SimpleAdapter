@@ -1,0 +1,56 @@
+apply plugin: 'com.android.library'
+apply plugin: 'com.jfrog.bintray'
+apply plugin: 'com.github.dcendents.android-maven'
+apply plugin: 'maven-publish'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+ext {
+    libraryDescription = 'Android Simple RecyclerView. by thdev.tech'
+    releaseNote = 'CHANGELOG_SIMPLE_RECYCLER.md'
+
+    // Bintray setting info
+    websiteUrl = 'https://github.com/taehwandev/CoroutinesUIExtensions/rx2-coroutines-extensions'
+    gitHubRepoUrl = 'https://github.com/taehwandev/CoroutinesUIExtensions.git'
+
+    LABELS = ['aar', 'android', 'android coroutines UI and RXJava2 extensions legacy']
+    GITHUB_REPO = 'taehwandev/CoroutinesUIExtensions'
+    NODE_NAME = 'CoroutinesUIExtensionsAndRXJava2Legacy'
+}
+
+android {
+    compileSdkVersion 29
+
+    defaultConfig {
+        minSdkVersion 23
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation kotlinLibrary
+    implementation appcompat
+    implementation recyclerView
+}

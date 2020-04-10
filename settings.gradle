@@ -1,0 +1,3 @@
+include ':BaseAdapter'
+include ':app'
+rootProject.name = "SimpleAdapter"
