@@ -10,12 +10,12 @@ ext {
     releaseNote = 'CHANGELOG_SIMPLE_RECYCLER.md'
 
     // Bintray setting info
-    websiteUrl = 'https://github.com/taehwandev/CoroutinesUIExtensions/rx2-coroutines-extensions'
-    gitHubRepoUrl = 'https://github.com/taehwandev/CoroutinesUIExtensions.git'
+    websiteUrl = 'https://github.com/taehwandev/SimpleAdapter'
+    gitHubRepoUrl = 'https://github.com/taehwandev/SimpleAdapter.git'
 
-    LABELS = ['aar', 'android', 'android coroutines UI and RXJava2 extensions legacy']
-    GITHUB_REPO = 'taehwandev/CoroutinesUIExtensions'
-    NODE_NAME = 'CoroutinesUIExtensionsAndRXJava2Legacy'
+    LABELS = ['aar', 'android', 'android Simple RecyclerView']
+    GITHUB_REPO = 'taehwandev/SimpleAdapter'
+    NODE_NAME = 'SimpleAdapter'
 }
 
 android {
@@ -54,3 +54,5 @@ dependencies {
     implementation appcompat
     implementation recyclerView
 }
+
+apply from: rootProject.file('gradle/publish.gradle')

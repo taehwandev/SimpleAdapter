@@ -1,3 +1,2 @@
-include ':BaseAdapter'
+include ':simple-adapter'
 include ':app'
-rootProject.name = "SimpleAdapter"

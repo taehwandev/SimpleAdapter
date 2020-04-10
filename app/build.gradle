@@ -40,7 +40,7 @@ dependencies {
     implementation kotlinLibrary
     implementation appcompat
     implementation recyclerView
-    implementation project(path: ':BaseAdapter')
+    implementation project(path: ':simple-adapter')
 
     implementation 'androidx.core:core-ktx:1.2.0'
     implementation 'com.google.android.material:material:1.1.0'
