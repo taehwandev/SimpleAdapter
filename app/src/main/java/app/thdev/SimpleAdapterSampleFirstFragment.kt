@@ -9,20 +9,22 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import app.thdev.databinding.FragmentFirstBinding
 import kotlinx.android.synthetic.main.item_text_view.view.*
-import tech.thdev.simpleadapter.SimpleRecyclerViewAdapter
-import tech.thdev.simpleadapter.bindViewHolder
+import tech.thdev.simpleadapter.SimpleAdapter
+import tech.thdev.simpleadapter.util.bindViewHolder
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
  */
-class FirstFragment : Fragment() {
+class SimpleAdapterSampleFirstFragment : Fragment() {
 
     private lateinit var binding: FragmentFirstBinding
 
-    private val adapter: SimpleRecyclerViewAdapter by lazy {
-        SimpleRecyclerViewAdapter { _ ->
-            bindViewHolder<Int>(R.layout.item_text_view) { item ->
-                text_view.text = "Index $item"
+    private val adapter: SimpleAdapter by lazy {
+        SimpleAdapter {
+            when (viewType) {
+                else -> bindViewHolder<Int>(R.layout.item_text_view) { item ->
+                    text_view.text = "Index $item"
+                }
             }
         }
     }
@@ -45,7 +47,7 @@ class FirstFragment : Fragment() {
         }
 
         binding.recyclerView.run {
-            this.adapter = this@FirstFragment.adapter
+            this.adapter = this@SimpleAdapterSampleFirstFragment.adapter
             this.layoutManager = LinearLayoutManager(requireContext())
         }
         (0..100).forEach {

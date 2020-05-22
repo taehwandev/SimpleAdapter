@@ -1,6 +1,6 @@
 package tech.thdev.simpleadapter.data.source
 
-interface AdapterRepository {
+internal interface AdapterRepository {
 
     fun getItemCount(): Int
 

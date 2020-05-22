@@ -2,7 +2,7 @@ package tech.thdev.simpleadapter.data.source
 
 import tech.thdev.simpleadapter.data.AdapterItem
 
-class AdapterRepositoryImpl : AdapterRepository {
+internal class AdapterRepositoryImpl : AdapterRepository {
 
     private val list = mutableListOf<AdapterItem>()
 

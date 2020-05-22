@@ -1,9 +1,11 @@
-apply plugin: 'com.android.library'
-apply plugin: 'com.jfrog.bintray'
-apply plugin: 'com.github.dcendents.android-maven'
-apply plugin: 'maven-publish'
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'com.jfrog.bintray'
+    id 'com.github.dcendents.android-maven'
+    id 'maven-publish'
+}
 
 ext {
     libraryDescription = 'Android Simple RecyclerView. by thdev.tech'
@@ -19,13 +21,12 @@ ext {
 }
 
 android {
-    compileSdkVersion 29
+    compileSdkVersion compileSdkVersionInfo
+    buildToolsVersion buildToolsVersionInfo
 
     defaultConfig {
-        minSdkVersion 23
-        targetSdkVersion 29
-        versionCode 1
-        versionName "1.0"
+        minSdkVersion minSdkVerisonInfo
+        targetSdkVersion targetSdkVersionInfo
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
@@ -45,6 +46,10 @@ android {
 
     kotlinOptions {
         jvmTarget = '1.8'
+    }
+
+    dataBinding {
+        enabled = true
     }
 }
 
