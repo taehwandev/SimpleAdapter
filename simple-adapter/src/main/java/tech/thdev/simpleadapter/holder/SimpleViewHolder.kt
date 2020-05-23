@@ -1,20 +1,23 @@
 package tech.thdev.simpleadapter.holder
 
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import androidx.viewbinding.ViewBinding
+import tech.thdev.simpleadapter.data.SimpleViewHolderItem
 
-class SimpleViewHolder<in ITEM : Any>(
-    parent: ViewGroup,
-    layoutRes: Int,
-    viewType: Int,
-    private val onBindViewHolder: View.(item: ITEM) -> Unit
-) : SimpleBaseViewHolder<ITEM>(
-    LayoutInflater.from(parent.context).inflate(layoutRes, parent, false),
+class SimpleViewHolder<BINDING : ViewBinding, in ITEM : Any>(
+    private val viewBinding: BINDING,
+    viewType: Int = -1,
+    private val bindViewHolder: SimpleViewHolderItem<BINDING, ITEM>.() -> Unit
+) : SimpleBaseViewHolder(
+    viewBinding.root,
     viewType
 ) {
 
-    override fun onBindViewHolder(item: ITEM) {
-        itemView.onBindViewHolder(item)
+    @Suppress("UNCHECKED_CAST")
+    override fun onBindViewHolder(item: Any) {
+        try {
+            SimpleViewHolderItem(viewBinding, item as ITEM).bindViewHolder()
+        } catch (e: Exception) {
+            // ...
+        }
     }
 }

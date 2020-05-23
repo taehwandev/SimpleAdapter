@@ -8,7 +8,7 @@ internal interface AdapterRepository {
 
     fun removeAt(position: Int)
 
-    fun getItemViewType(position: Int): Int
+    fun getViewType(position: Int): Int
 
     fun addItem(viewType: Int, item: Any)
 

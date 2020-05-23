@@ -1,29 +1,17 @@
 package tech.thdev.simpleadapter
 
 import android.view.ViewGroup
-import androidx.recyclerview.widget.RecyclerView
-import tech.thdev.simpleadapter.data.source.AdapterRepository
-import tech.thdev.simpleadapter.data.source.AdapterRepositoryImpl
+import tech.thdev.simpleadapter.data.SimpleAdapterCreateItem
 import tech.thdev.simpleadapter.holder.SimpleBaseViewHolder
+import tech.thdev.simpleadapter.holder.SimpleViewHolder
 
 class SimpleAdapter(
-    private val onCreateHolder: SimpleAdapterCreateItem.() -> SimpleBaseViewHolder<*>
-) : RecyclerView.Adapter<SimpleBaseViewHolder<*>>(),
-    AdapterRepository by AdapterRepositoryImpl() {
+    private val onCreateHolder: SimpleAdapterCreateItem.() -> SimpleViewHolder<*, *>
+) : SimpleBaseAdapter<SimpleViewHolder<*, *>>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SimpleBaseViewHolder<*> =
-        SimpleAdapterCreateItem(parent, viewType).onCreateHolder()
-
-    override fun getItemViewType(position: Int): Int {
-        return super.getItemViewType(position)
-    }
-
-    override fun onBindViewHolder(holder: SimpleBaseViewHolder<*>, position: Int) {
-        holder.safeOnBindViewHolder(getItem(position))
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SimpleViewHolder<*, *> {
+        val view = SimpleAdapterCreateItem(parent, viewType).onCreateHolder()
+        android.util.Log.d("TEMP", "onCreateViewHolder $viewType view ${view.hashCode()}")
+        return view
     }
 }
-
-data class SimpleAdapterCreateItem(
-    val parent: ViewGroup,
-    val viewType: Int
-)

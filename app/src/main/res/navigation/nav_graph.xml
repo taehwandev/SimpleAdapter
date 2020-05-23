@@ -3,26 +3,26 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/FirstFragment">
+    app:startDestination="@id/action_FirstFragment_to_SecondFragment">
 
     <fragment
-        android:id="@+id/FirstFragment"
+        android:id="@+id/action_FirstFragment_to_SecondFragment"
         android:name="app.thdev.SimpleAdapterSampleFirstFragment"
         android:label="@string/first_fragment_label"
-        tools:layout="@layout/fragment_first">
+        tools:layout="@layout/adapter_sample_fragment">
 
         <action
             android:id="@+id/action_FirstFragment_to_SecondFragment"
-            app:destination="@id/SecondFragment" />
+            app:destination="@id/SimpleAdapterControlSampleFragment" />
     </fragment>
     <fragment
-        android:id="@+id/SecondFragment"
-        android:name="app.thdev.SimpleAdapterSampleSecondFragment"
+        android:id="@+id/SimpleAdapterControlSampleFragment"
+        android:name="app.thdev.ui.adapter_control.SimpleAdapterControlSampleFragment"
         android:label="@string/second_fragment_label"
-        tools:layout="@layout/fragment_second">
+        tools:layout="@layout/adapter_control_sample_fragment">
 
         <action
             android:id="@+id/action_SecondFragment_to_FirstFragment"
-            app:destination="@id/FirstFragment" />
+            app:destination="@id/action_FirstFragment_to_SecondFragment" />
     </fragment>
 </navigation>

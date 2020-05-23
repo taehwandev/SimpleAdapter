@@ -16,7 +16,7 @@ internal class AdapterRepositoryImpl : AdapterRepository {
         list.removeAt(position)
     }
 
-    override fun getItemViewType(position: Int): Int =
+    override fun getViewType(position: Int): Int =
         list[position].viewType
 
     override fun addItem(viewType: Int, item: Any) {

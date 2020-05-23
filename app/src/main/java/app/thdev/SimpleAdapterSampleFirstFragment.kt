@@ -4,11 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import app.thdev.databinding.FragmentFirstBinding
-import kotlinx.android.synthetic.main.item_text_view.view.*
+import app.thdev.databinding.AdapterSampleFragmentBinding
+import app.thdev.databinding.ItemTextViewBinding
 import tech.thdev.simpleadapter.SimpleAdapter
 import tech.thdev.simpleadapter.util.bindViewHolder
 
@@ -17,13 +18,22 @@ import tech.thdev.simpleadapter.util.bindViewHolder
  */
 class SimpleAdapterSampleFirstFragment : Fragment() {
 
-    private lateinit var binding: FragmentFirstBinding
+    private lateinit var binding: AdapterSampleFragmentBinding
 
-    private val adapter: SimpleAdapter by lazy {
+    private val simpleAdapter: SimpleAdapter by lazy {
         SimpleAdapter {
             when (viewType) {
-                else -> bindViewHolder<Int>(R.layout.item_text_view) { item ->
-                    text_view.text = "Index $item"
+                1 -> bindViewHolder<ItemTextViewBinding, Long>(
+                    ItemTextViewBinding.inflate(layoutInflater, parent, false)
+                ) { item ->
+                    root.setOnClickListener {
+                        Toast.makeText(requireContext(), "show Index $item", Toast.LENGTH_SHORT)
+                            .show()
+                    }
+                    textView.text = "Use inflate $item"
+                }
+                else -> bindViewHolder<ItemTextViewBinding, Long> {
+                    textView.text = "User reflection $it"
                 }
             }
         }
@@ -34,7 +44,7 @@ class SimpleAdapterSampleFirstFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return FragmentFirstBinding.inflate(inflater, container, false).also {
+        return AdapterSampleFragmentBinding.inflate(inflater, container, false).also {
             binding = it
         }.root
     }
@@ -47,11 +57,11 @@ class SimpleAdapterSampleFirstFragment : Fragment() {
         }
 
         binding.recyclerView.run {
-            this.adapter = this@SimpleAdapterSampleFirstFragment.adapter
+            this.adapter = simpleAdapter
             this.layoutManager = LinearLayoutManager(requireContext())
         }
         (0..100).forEach {
-            adapter.addItem(0, it)
+            simpleAdapter.addItem(it % 2, it)
         }
     }
 }
