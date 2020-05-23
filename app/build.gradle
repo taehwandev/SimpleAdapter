@@ -46,8 +46,11 @@ dependencies {
     implementation appcompat
     implementation recyclerView
     implementation project(path: ':simple-adapter')
-    implementation project(path: ':simple-viewbinding')
-    implementation project(path: ':simple-databinding')
+    implementation project(path: ':simple-adapter-viewbinding')
+    implementation project(path: ':simple-adapter-databinding')
+//    implementation "tech.thdev.recyclerview:simple-adapter:1.1.0"
+//    implementation "tech.thdev.recyclerview:simple-adapter-databinding:1.1.0"
+//    implementation "tech.thdev.recyclerview:simple-adapter-viewbinding:1.1.0"
 
     implementation 'androidx.core:core-ktx:1.2.0'
     implementation 'com.google.android.material:material:1.1.0'
