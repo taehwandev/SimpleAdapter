@@ -8,14 +8,14 @@ plugins {
 }
 
 ext {
-    libraryDescription = 'Android Simple RecyclerView. by thdev.tech'
-    releaseNote = 'CHANGELOG_SIMPLE_RECYCLER.md'
+    libraryDescription = 'Android Simple Adapter - ViewBinding. by thdev.tech'
+    releaseNote = 'CHANGELOG_SIMPLE_ADAPTER_VIEW_BINDING.md'
 
     // Bintray setting info
     websiteUrl = 'https://github.com/taehwandev/SimpleAdapter'
     gitHubRepoUrl = 'https://github.com/taehwandev/SimpleAdapter.git'
 
-    LABELS = ['aar', 'android', 'android Simple RecyclerView']
+    LABELS = ['aar', 'android', 'android Simple Adapter', 'Android ViewBinding']
     GITHUB_REPO = 'taehwandev/SimpleAdapter'
     NODE_NAME = 'SimpleAdapter'
 }
@@ -47,10 +47,17 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+
+    viewBinding {
+        enabled = true
+    }
 }
 
 dependencies {
+    implementation project(path: ':simple-adapter')
+
     implementation kotlinLibrary
+    
     implementation appcompat
     implementation recyclerView
 }

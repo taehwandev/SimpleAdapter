@@ -3,26 +3,41 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/FirstFragment">
+    app:startDestination="@id/adapterSampleFragment">
 
     <fragment
-        android:id="@+id/FirstFragment"
-        android:name="app.thdev.FirstFragment"
-        android:label="@string/first_fragment_label"
-        tools:layout="@layout/fragment_first">
+        android:id="@+id/adapterSampleFragment"
+        android:name="app.thdev.SimpleAdapterSampleFirstFragment"
+        android:label="@string/adapter_sample_fragment_label"
+        tools:layout="@layout/adapter_sample_fragment">
 
         <action
-            android:id="@+id/action_FirstFragment_to_SecondFragment"
-            app:destination="@id/SecondFragment" />
+            android:id="@+id/action_AdapterSample_to_AdapterControlSample"
+            app:destination="@id/adapterControlSampleFragment" />
     </fragment>
     <fragment
-        android:id="@+id/SecondFragment"
-        android:name="app.thdev.SecondFragment"
-        android:label="@string/second_fragment_label"
-        tools:layout="@layout/fragment_second">
+        android:id="@+id/adapterControlSampleFragment"
+        android:name="app.thdev.ui.adapter_control.SimpleAdapterControlSampleFragment"
+        android:label="@string/adapter_control_sample_fragment_label"
+        tools:layout="@layout/adapter_control_sample_fragment">
 
         <action
-            android:id="@+id/action_SecondFragment_to_FirstFragment"
-            app:destination="@id/FirstFragment" />
+            android:id="@+id/action_AdapterControlSample_to_AdapterSample"
+            app:destination="@id/adapterSampleFragment" />
+
+        <action
+            android:id="@+id/action_AdapterControlSample_to_DataBindingSample"
+            app:destination="@id/adapterDataBindingFragmnet" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/adapterDataBindingFragmnet"
+        android:name="app.thdev.ui.databinding.SimpleAdapterDataBindingSampleFragment"
+        android:label="@string/data_binding_sample_label"
+        tools:layout="@layout/adapter_data_binding_sample_fragment">
+
+        <action
+            android:id="@+id/action_AdapterDataBindingSample_to_AdapterControlSample"
+            app:destination="@id/adapterControlSampleFragment" />
     </fragment>
 </navigation>
