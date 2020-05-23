@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="item"
+            type="app.thdev.ui.databinding.AdapterDataBindingItem" />
+
+        <variable
+            name="viewModel"
+            type="app.thdev.ui.databinding.SimpleAdapterDataBindingSampleViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:onClick="@{() -> viewModel.onClickItem(item)}">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/text_view"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:gravity="center"
+            android:text="@{@string/data_binding_item_message(item.index)}"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="@string/data_binding_item_message" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

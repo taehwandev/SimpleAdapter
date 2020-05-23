@@ -1,17 +1,17 @@
 package app.thdev.ui.adapter_control
 
 import app.thdev.databinding.ItemTextViewBinding
-import tech.thdev.simpleadapter.control.SimpleAdapterControl
-import tech.thdev.simpleadapter.data.SimpleAdapterCreateItem
-import tech.thdev.simpleadapter.holder.SimpleViewHolder
-import tech.thdev.simpleadapter.util.bindViewHolder
+import tech.thdev.simpleadapter.control.SimpleViewBindingAdapterControl
+import tech.thdev.simpleadapter.data.SimpleViewBindingAdapterCreateItem
+import tech.thdev.simpleadapter.holder.SimpleViewBindingViewHolder
+import tech.thdev.simpleadapter.util.createViewBindingHolder
 
 class SimpleAdapterControlSampleAdapterControl(
     private val onClick: (item: Int) -> Unit
-) : SimpleAdapterControl<AdapterItemGroup>() {
+) : SimpleViewBindingAdapterControl<AdapterItemGroup>() {
 
-    override fun SimpleAdapterCreateItem.onCreateSimpleViewHolder(): SimpleViewHolder<*, *> =
-        bindViewHolder<ItemTextViewBinding, Int> { item ->
+    override fun SimpleViewBindingAdapterCreateItem.onCreateViewHolder(): SimpleViewBindingViewHolder<*, *> =
+        createViewBindingHolder<ItemTextViewBinding, Int> { item ->
             textView.text = "Message $item"
             root.setOnClickListener {
                 onClick(item)

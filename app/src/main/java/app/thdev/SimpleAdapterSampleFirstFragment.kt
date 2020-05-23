@@ -10,8 +10,8 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import app.thdev.databinding.AdapterSampleFragmentBinding
 import app.thdev.databinding.ItemTextViewBinding
-import tech.thdev.simpleadapter.SimpleAdapter
-import tech.thdev.simpleadapter.util.bindViewHolder
+import tech.thdev.simpleadapter.SimpleViewBindingAdapter
+import tech.thdev.simpleadapter.util.createViewBindingHolder
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
@@ -20,10 +20,11 @@ class SimpleAdapterSampleFirstFragment : Fragment() {
 
     private lateinit var binding: AdapterSampleFragmentBinding
 
-    private val simpleAdapter: SimpleAdapter by lazy {
-        SimpleAdapter {
+    private val simpleAdapter: SimpleViewBindingAdapter by lazy {
+        SimpleViewBindingAdapter {
+            android.util.Log.w("TEMP", "viewType $viewType")
             when (viewType) {
-                1 -> bindViewHolder<ItemTextViewBinding, Long>(
+                1 -> createViewBindingHolder<ItemTextViewBinding, Long>(
                     ItemTextViewBinding.inflate(layoutInflater, parent, false)
                 ) { item ->
                     root.setOnClickListener {
@@ -32,7 +33,7 @@ class SimpleAdapterSampleFirstFragment : Fragment() {
                     }
                     textView.text = "Use inflate $item"
                 }
-                else -> bindViewHolder<ItemTextViewBinding, Long> {
+                else -> createViewBindingHolder<ItemTextViewBinding, Long> {
                     textView.text = "User reflection $it"
                 }
             }
@@ -53,7 +54,7 @@ class SimpleAdapterSampleFirstFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.buttonFirst.setOnClickListener {
-            findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
+            findNavController().navigate(R.id.action_AdapterSample_to_AdapterControlSample)
         }
 
         binding.recyclerView.run {

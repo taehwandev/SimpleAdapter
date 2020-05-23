@@ -2,11 +2,16 @@
     <string name="app_name">SimpleAdapter</string>
     <string name="action_settings">Settings</string>
     <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
 
-    <string name="hello_first_fragment">Hello first fragment</string>
-    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <!-- Adapter Sample -->
+    <string name="adapter_sample_fragment_label">Adapter sample Fragment</string>
+
+    <!-- Adapter Control Sample -->
+    <string name="adapter_control_sample_fragment_label">Adapter control sample Fragment</string>
+
+    <!-- DataBinding Sample -->
+    <string name="data_binding_sample_label">DataBinding sample Fragment</string>
+    <string name="data_binding_item_message">DataBinding Item %d</string>
 </resources>
