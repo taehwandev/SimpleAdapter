@@ -1,6 +1,8 @@
-apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+}
 
 android {
     compileSdkVersion compileSdkVersionInfo
@@ -32,6 +34,9 @@ android {
     viewBinding {
         enabled = true
     }
+    dataBinding {
+        enabled = true
+    }
 }
 
 dependencies {
@@ -41,6 +46,8 @@ dependencies {
     implementation appcompat
     implementation recyclerView
     implementation project(path: ':simple-adapter')
+    implementation project(path: ':simple-viewbinding')
+    implementation project(path: ':simple-databinding')
 
     implementation 'androidx.core:core-ktx:1.2.0'
     implementation 'com.google.android.material:material:1.1.0'

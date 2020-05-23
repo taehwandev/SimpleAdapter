@@ -1,12 +1,13 @@
 package tech.thdev.simpleadapter.holder
 
 import androidx.viewbinding.ViewBinding
-import tech.thdev.simpleadapter.data.SimpleViewHolderItem
+import tech.thdev.simpleadapter.data.SimpleViewBindingViewHolderItem
 
-class SimpleViewHolder<BINDING : ViewBinding, in ITEM : Any>(
+
+class SimpleViewBindingViewHolder<BINDING : ViewBinding, in ITEM : Any>(
     private val viewBinding: BINDING,
     viewType: Int = -1,
-    private val bindViewHolder: SimpleViewHolderItem<BINDING, ITEM>.() -> Unit
+    private val bindViewHolder: SimpleViewBindingViewHolderItem<BINDING, ITEM>.() -> Unit
 ) : SimpleBaseViewHolder(
     viewBinding.root,
     viewType
@@ -15,7 +16,8 @@ class SimpleViewHolder<BINDING : ViewBinding, in ITEM : Any>(
     @Suppress("UNCHECKED_CAST")
     override fun onBindViewHolder(item: Any) {
         try {
-            SimpleViewHolderItem(viewBinding, item as ITEM).bindViewHolder()
+            SimpleViewBindingViewHolderItem(viewBinding, item as ITEM)
+                .bindViewHolder()
         } catch (e: Exception) {
             // ...
         }

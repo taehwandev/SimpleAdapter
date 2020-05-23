@@ -1,27 +1,32 @@
 package tech.thdev.simpleadapter.control
 
-import tech.thdev.simpleadapter.SimpleAdapter
-import tech.thdev.simpleadapter.data.SimpleAdapterCreateItem
-import tech.thdev.simpleadapter.holder.SimpleViewHolder
+import androidx.lifecycle.ViewModel
+import tech.thdev.simpleadapter.SimpleDataBindingAdapter
+import tech.thdev.simpleadapter.data.SimpleDataBindingAdapterCreateItem
+import tech.thdev.simpleadapter.holder.SimpleDataBindingViewHolder
 
-abstract class SimpleAdapterControl<ITEM : Any> {
+abstract class SimpleDataBindingAdapterControl<ITEM : Any> {
 
-    val adapter: SimpleAdapter by lazy {
-        SimpleAdapter {
-            onCreateSimpleViewHolder()
+    val adapter: SimpleDataBindingAdapter by lazy {
+        SimpleDataBindingAdapter {
+            onCreateViewHolder()
         }
     }
 
     /**
      * Use bindViewHolder
      */
-    abstract fun SimpleAdapterCreateItem.onCreateSimpleViewHolder(): SimpleViewHolder<*, *>
+    abstract fun SimpleDataBindingAdapterCreateItem.onCreateViewHolder(): SimpleDataBindingViewHolder
 
     /**
      * adapter add item.
      * @param item Group data class.
      */
-    abstract fun setItem(item: ITEM)
+    protected abstract fun SimpleDataBindingAdapter.onCreateItems(item: ITEM, viewModel: ViewModel?)
+
+    fun setItems(item: ITEM, viewModel: ViewModel?) {
+        adapter.onCreateItems(item, viewModel)
+    }
 
     fun notifyDataSetChanged() {
         adapter.notifyDataSetChanged()

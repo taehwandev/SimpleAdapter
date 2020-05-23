@@ -36,8 +36,12 @@ class SimpleAdapterControlSampleFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.buttonSecond.setOnClickListener {
-            findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)
+        binding.buttonPrev.setOnClickListener {
+            findNavController().navigate(R.id.action_AdapterControlSample_to_AdapterSample)
+        }
+
+        binding.buttonNext.setOnClickListener {
+            findNavController().navigate(R.id.action_AdapterControlSample_to_DataBindingSample)
         }
 
         binding.recyclerView.run {
