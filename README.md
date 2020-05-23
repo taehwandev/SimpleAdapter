@@ -17,6 +17,7 @@ It can be used jcenter(), as follows
 add Android DataBinding library and dependency
 
 [ ![Download](https://api.bintray.com/packages/taehwandev/thdev.tech/simple-adapter/images/download.svg) ](https://bintray.com/taehwandev/thdev.tech/simple-adapter/_latestVersion)
+[ ![Download](https://api.bintray.com/packages/taehwandev/thdev.tech/simple-adapter-databinding/images/download.svg) ](https://bintray.com/taehwandev/thdev.tech/simple-adapter-databinding/_latestVersion)
 
 ```
 plugins {
@@ -87,6 +88,7 @@ data class AdapterDataBindingItem(
 add Android viewBinding library and dependency
 
 [ ![Download](https://api.bintray.com/packages/taehwandev/thdev.tech/simple-adapter/images/download.svg) ](https://bintray.com/taehwandev/thdev.tech/simple-adapter/_latestVersion)
+[ ![Download](https://api.bintray.com/packages/taehwandev/thdev.tech/simple-adapter-viewbinding/images/download.svg) ](https://bintray.com/taehwandev/thdev.tech/simple-adapter-viewbinding/_latestVersion)
 
 ```
 plugins {
