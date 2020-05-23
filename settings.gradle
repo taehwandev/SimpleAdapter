@@ -1,4 +1,4 @@
-include ':simple-viewbinding'
-include ':simple-databinding'
+include ':simple-adapter-viewbinding'
+include ':simple-adapter-databinding'
 include ':simple-adapter'
 include ':app'
