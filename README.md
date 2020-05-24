@@ -25,7 +25,7 @@ plugins {
     id 'kotlin-kapt'
 }
 
-viewBinding {
+dataBinding {
     enabled = true
 }
 
